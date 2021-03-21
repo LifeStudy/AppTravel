@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var tableViagens: UITableView!
     @IBOutlet weak var viewHoteis: UIView!
     @IBOutlet weak var viewPacotes: UIView!
@@ -31,13 +31,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
         
-        cell.labelTitulo.text = viagens[indexPath.row].titulo
-        cell.labelPreco.text = viagens[indexPath.row].preco
-        cell.labelQuantidade.text = "\(viagens[indexPath.row].quantidadeDeDias) dias"
-        cell.imagemViagem.image = UIImage(named: viagens[indexPath.row].caminhoDaImagem)
-        
-        cell.imagemViagem.layer.cornerRadius = 10
-        cell.imagemViagem.layer.masksToBounds = true
+        cell.setupCell(viagem: viagens[indexPath.row])
         
         return cell
     }
